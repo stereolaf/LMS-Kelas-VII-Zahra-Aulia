@@ -1,1 +1,1679 @@
-Selamat Datang di LMS Kelas VII Sekolah Lentera Insani
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS IPS Kelas VII - SMP Lentera Insani</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkPastel: {
+                            50: '#fff0f4',
+                            100: '#ffe2eb',
+                            200: '#fecddc',
+                            300: '#fba5be',
+                            400: '#f77298',
+                            500: '#ee4375',
+                            600: '#db2761',
+                            700: '#c21d51',
+                            800: '#9d1a45',
+                            900: '#831a3e',
+                            950: '#4a0820'
+                        },
+                        pastelMint: { 100: '#d1fae5', 500: '#10b981', 700: '#047857' },
+                        pastelYellow: { 100: '#fef3c7', 500: '#f59e0b', 700: '#b45309' },
+                        pastelBlue: { 100: '#e0f2fe', 500: '#0ea5e9', 700: '#0369a1' },
+                        pastelPurple: { 100: '#f3e8ff', 500: '#a855f7', 700: '#6b21a8' },
+                        pastelOrange: { 100: '#ffedd5', 500: '#f97316', 700: '#c2410c' }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #ffe2eb; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #fba5be; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pinkPastel-100 via-rose-100 to-pastelPurple-100 min-h-screen text-slate-800 flex flex-col md:flex-row">
+
+    <!-- MOBILE NAVBAR HEADER -->
+    <div class="md:hidden bg-pinkPastel-400 text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg border-b border-pinkPastel-300">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-2xl bg-white text-pinkPastel-600 flex items-center justify-center text-xl font-black shadow">
+                <i class="fa-solid fa-earth-asia"></i>
+            </div>
+            <div>
+                <h1 class="font-extrabold text-sm leading-tight text-white">LMS IPS KELAS VII</h1>
+                <p class="text-[11px] text-pinkPastel-50 font-bold">Zahra Aulia, S.Pd.</p>
+            </div>
+        </div>
+        <button id="mobileMenuBtn" class="text-white text-xl focus:outline-none p-2 rounded-xl bg-pinkPastel-500 shadow">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- SIDEBAR NAVIGATION (Pure Pink Pastel & Colorful Theme) -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-full md:w-72 bg-gradient-to-b from-pinkPastel-300 via-pinkPastel-200 to-rose-200 text-pinkPastel-950 border-r border-pinkPastel-300 shadow-2xl z-40 fixed md:static inset-y-0 left-0 transition-all duration-300">
+        <!-- School & Brand Header -->
+        <div class="p-6 border-b border-pinkPastel-300/80 bg-white/60 backdrop-blur-md text-pinkPastel-950 flex items-center space-x-3 shadow-sm">
+            <div class="w-11 h-11 rounded-2xl bg-pinkPastel-400 text-white flex items-center justify-center text-xl shadow-md font-black">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h2 class="font-black text-xs tracking-wider text-pinkPastel-950">LMS IPS KELAS VII</h2>
+                <p class="text-[11px] text-pinkPastel-700 font-bold">SMP Lentera Insani</p>
+            </div>
+        </div>
+
+        <!-- Role Switcher & Teacher Badge -->
+        <div class="p-4 mx-4 my-4 bg-white/80 border border-pinkPastel-300 rounded-2xl shadow-sm text-center">
+            <span class="bg-pinkPastel-400 text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-sm">Guru Profesional</span>
+            <p class="font-extrabold text-sm text-pinkPastel-950 mt-1">Zahra Aulia, S.Pd.</p>
+            <p class="text-[10px] text-pinkPastel-700 mt-0.5 font-bold">S1 Pendidikan IPS - UIN Jakarta</p>
+            
+            <div class="mt-3 pt-3 border-t border-pinkPastel-200 flex items-center justify-between">
+                <span class="text-[10px] font-bold text-pinkPastel-800">Mode Akses:</span>
+                <select id="userRoleSwitcher" onchange="switchUserRole(this.value)" class="text-[11px] font-extrabold bg-pinkPastel-400 text-white px-2.5 py-1 rounded-xl shadow focus:outline-none cursor-pointer">
+                    <option value="siswa">Siswa</option>
+                    <option value="guru">Guru (Ibu Zahra)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-1 px-4 py-2 space-y-1.5 overflow-y-auto custom-scrollbar">
+            <button onclick="switchTab('dashboard')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-black text-xs transition-all text-white bg-pinkPastel-500 shadow-md" data-tab="dashboard">
+                <i class="fa-solid fa-house w-5 text-white"></i>
+                <span>Beranda & Ringkasan</span>
+            </button>
+            <button onclick="switchTab('profilguru')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="profilguru">
+                <i class="fa-solid fa-user-tie w-5 text-pinkPastel-600"></i>
+                <span>Profil & Visi Misi Guru</span>
+            </button>
+            <button onclick="switchTab('materi')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="materi">
+                <i class="fa-solid fa-book-open-reader w-5 text-emerald-600"></i>
+                <span>Materi & Video Detail</span>
+            </button>
+            <button onclick="switchTab('presensi')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="presensi">
+                <i class="fa-solid fa-clipboard-user w-5 text-sky-600"></i>
+                <span>Presensi & Rekapitulasi</span>
+            </button>
+            <button onclick="switchTab('kuis')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="kuis">
+                <i class="fa-solid fa-gamepad w-5 text-amber-600"></i>
+                <span>Kuis & Rekap Nilai</span>
+            </button>
+            <button onclick="switchTab('tugas')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="tugas">
+                <i class="fa-solid fa-upload w-5 text-orange-600"></i>
+                <span>Kumpulan Tugas (Upload File)</span>
+            </button>
+            <button onclick="switchTab('diskusi')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="diskusi">
+                <i class="fa-solid fa-comments w-5 text-purple-600"></i>
+                <span>Ruang Diskusi (Forum)</span>
+            </button>
+            <button onclick="switchTab('rpp')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="rpp">
+                <i class="fa-solid fa-file-pdf w-5 text-pink-600"></i>
+                <span>RPP Lengkap (K13 & Merdeka)</span>
+            </button>
+            <button onclick="switchTab('jadwal')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="jadwal">
+                <i class="fa-solid fa-calendar-days w-5 text-teal-600"></i>
+                <span>Jadwal Mengajar</span>
+            </button>
+            <button onclick="switchTab('kalender')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="kalender">
+                <i class="fa-regular fa-calendar-check w-5 text-blue-600"></i>
+                <span>Kalender Pendidikan</span>
+            </button>
+            <button onclick="switchTab('contact')" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 hover:bg-white/80 hover:shadow-sm" data-tab="contact">
+                <i class="fa-solid fa-headset w-5 text-pinkPastel-700"></i>
+                <span>Contact Person Guru</span>
+            </button>
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div class="p-4 border-t border-pinkPastel-300 text-center text-[11px] text-pinkPastel-800 bg-white/40">
+            SMP Lentera Insani &copy; 2026/2027<br>
+            <span class="text-pinkPastel-600 font-extrabold">LMS IPS Zahra Aulia, S.Pd.</span>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full">
+
+        <!-- ================= TAB: DASHBOARD ================= -->
+        <section id="tab-dashboard" class="space-y-6">
+            <!-- Hero Banner (Bright Pink Pastel + Colorful Accent) -->
+            <div class="bg-gradient-to-r from-pinkPastel-400 via-rose-300 to-pastelPurple-200 rounded-3xl p-6 md:p-8 text-pinkPastel-950 shadow-xl relative overflow-hidden border border-pinkPastel-300">
+                <div class="absolute -right-8 -bottom-8 w-64 h-64 bg-white/40 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-white/80 text-pinkPastel-600 text-[11px] px-3.5 py-1.5 rounded-full font-black uppercase tracking-wider mb-3 inline-block shadow-sm">
+                        🌸 Learning Management System IPS Kelas VII
+                    </span>
+                    <h1 class="text-2xl md:text-4xl font-black leading-tight mb-3 text-pinkPastel-950">
+                        Selamat Datang di Portal Belajar IPS Kelas VII!
+                    </h1>
+                    <p class="text-pinkPastel-950/90 text-xs md:text-sm mb-6 leading-relaxed font-bold">
+                        Platform e-learning interaktif Ilmu Pengetahuan Sosial (IPS) Kelas VII SMP Lentera Insani. Temukan keseruan belajar geografi, ruang & lingkungan, sosialisasi, kegiatan ekonomi, serta sejarah Nusantara bersama pengampu <strong class="text-pinkPastel-700">Zahra Aulia, S.Pd.</strong>
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="switchTab('materi')" class="bg-pinkPastel-500 hover:bg-pinkPastel-600 text-white font-black px-5 py-3 rounded-xl text-xs transition-transform active:scale-95 shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> Mulai Pelajari Materi
+                        </button>
+                        <button onclick="switchTab('presensi')" class="bg-emerald-400 hover:bg-emerald-500 text-emerald-950 font-extrabold px-5 py-3 rounded-xl text-xs transition-transform active:scale-95 flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-user-check"></i> Isi Kehadiran Hari Ini
+                        </button>
+                        <button onclick="switchTab('contact')" class="bg-sky-400 hover:bg-sky-500 text-sky-950 font-extrabold px-5 py-3 rounded-xl text-xs transition-transform active:scale-95 flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-paper-plane"></i> Hubungi Bu Zahra
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid (Colorful Pastel Cards) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-pinkPastel-300 to-rose-400 p-5 rounded-3xl shadow-md text-pinkPastel-950 flex items-center space-x-4 border border-pinkPastel-200">
+                    <div class="w-12 h-12 rounded-2xl bg-white/40 text-pinkPastel-950 flex items-center justify-center text-xl font-bold backdrop-blur-sm shadow-sm">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-pinkPastel-900 font-bold">Total Materi</p>
+                        <h3 class="text-lg font-black">11 Bab Lengkap</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-pastelMint-100 to-emerald-300 p-5 rounded-3xl shadow-md text-emerald-950 flex items-center space-x-4 border border-emerald-200">
+                    <div class="w-12 h-12 rounded-2xl bg-white/50 text-emerald-900 flex items-center justify-center text-xl font-bold backdrop-blur-sm shadow-sm">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-emerald-900 font-bold">Kurikulum</p>
+                        <h3 class="text-lg font-black">K13 & Merdeka</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-pastelBlue-100 to-sky-300 p-5 rounded-3xl shadow-md text-sky-950 flex items-center space-x-4 border border-sky-200">
+                    <div class="w-12 h-12 rounded-2xl bg-white/50 text-sky-900 flex items-center justify-center text-xl font-bold backdrop-blur-sm shadow-sm">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-sky-900 font-bold">Peserta Didik</p>
+                        <h3 class="text-lg font-black">Kelas VII (A-C)</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-pastelYellow-100 to-amber-300 p-5 rounded-3xl shadow-md text-amber-950 flex items-center space-x-4 border border-amber-200">
+                    <div class="w-12 h-12 rounded-2xl bg-white/50 text-amber-900 flex items-center justify-center text-xl font-bold backdrop-blur-sm shadow-sm">
+                        <i class="fa-solid fa-file-arrow-up"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-amber-900 font-bold">Pengumpulan File</p>
+                        <h3 class="text-lg font-black">Fitur Upload Active</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Split Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Announcements -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-pinkPastel-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-base font-black text-pinkPastel-950 flex items-center gap-2">
+                                <span class="text-xl">📢</span> Pengumuman Pembelajaran IPS
+                            </h2>
+                            <span class="text-[10px] text-pinkPastel-950 font-extrabold bg-pinkPastel-200 px-3 py-1 rounded-full border border-pinkPastel-300">SMP Lentera Insani</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-white border border-pinkPastel-200 flex gap-4 items-start shadow-sm">
+                                <div class="bg-pinkPastel-400 text-white p-2.5 rounded-xl text-center min-w-[55px] shadow">
+                                    <span class="block text-[9px] font-bold uppercase text-pinkPastel-100">NOV</span>
+                                    <span class="block text-lg font-black">03</span>
+                                </div>
+                                <div>
+                                    <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase">Update Fitur</span>
+                                    <h4 class="font-extrabold text-slate-900 text-xs mt-1">Fitur Upload File Tugas Langsung Aktif</h4>
+                                    <p class="text-[11px] text-slate-700 mt-1 leading-relaxed font-medium">
+                                        Siswa kini dapat mengunggah file tugas langsung dalam format PDF, Word, atau Gambar melalui menu <strong class="text-pinkPastel-600">Kumpulan Tugas</strong> tanpa harus membuat link Drive terlebih dahulu.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-white border border-pinkPastel-200 flex gap-4 items-start shadow-sm">
+                                <div class="bg-amber-400 text-pinkPastel-950 p-2.5 rounded-xl text-center min-w-[55px] font-bold shadow">
+                                    <span class="block text-[9px] font-bold uppercase">NOV</span>
+                                    <span class="block text-lg font-black">10</span>
+                                </div>
+                                <div>
+                                    <span class="bg-amber-100 text-amber-800 border border-amber-300 text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase">Kuis Online</span>
+                                    <h4 class="font-extrabold text-slate-900 text-xs mt-1">Ujian Kuis Interaktif IPS Bab 1 & 2</h4>
+                                    <p class="text-[11px] text-slate-700 mt-1 leading-relaxed font-medium">
+                                        Silakan akses menu Kuis & Rekap Nilai untuk mengasah pemahaman materi. Skor akan terekam secara otomatis oleh Ibu Zahra Aulia.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Colorful Navigation Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <button onclick="switchTab('materi')" class="p-5 rounded-3xl bg-gradient-to-br from-emerald-200 to-teal-300 text-emerald-950 shadow-md hover:scale-[1.02] transition-all text-left border border-emerald-300">
+                            <div class="w-10 h-10 rounded-xl bg-white/60 flex items-center justify-center text-lg mb-3 shadow-sm"><i class="fa-solid fa-video text-emerald-700"></i></div>
+                            <h4 class="font-black text-xs">Materi & Video</h4>
+                            <p class="text-[10px] text-emerald-900 font-bold">11 Bab Lengkap</p>
+                        </button>
+                        <button onclick="switchTab('kuis')" class="p-5 rounded-3xl bg-gradient-to-br from-amber-200 to-orange-300 text-amber-950 shadow-md hover:scale-[1.02] transition-all text-left border border-amber-300">
+                            <div class="w-10 h-10 rounded-xl bg-white/60 flex items-center justify-center text-lg mb-3 shadow-sm"><i class="fa-solid fa-puzzle-piece text-amber-700"></i></div>
+                            <h4 class="font-black text-xs">Kerjakan Kuis</h4>
+                            <p class="text-[10px] text-amber-900 font-bold">Uji Skor Otomatis</p>
+                        </button>
+                        <button onclick="switchTab('tugas')" class="p-5 rounded-3xl bg-gradient-to-br from-purple-200 to-pink-300 text-purple-950 shadow-md hover:scale-[1.02] transition-all text-left border border-purple-300">
+                            <div class="w-10 h-10 rounded-xl bg-white/60 flex items-center justify-center text-lg mb-3 shadow-sm"><i class="fa-solid fa-upload text-purple-700"></i></div>
+                            <h4 class="font-black text-xs">Kirim File Tugas</h4>
+                            <p class="text-[10px] text-purple-900 font-bold">Upload Tugas IPS</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teacher Bio Brief Card -->
+                <div class="space-y-6">
+                    <div class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-pinkPastel-200 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-pinkPastel-400 via-rose-300 to-amber-300"></div>
+                        <div class="pt-4">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pinkPastel-400 to-rose-300 text-white flex items-center justify-center text-2xl mx-auto shadow-md mb-3 border border-pinkPastel-200">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <h3 class="font-black text-sm text-pinkPastel-950">Zahra Aulia, S.Pd.</h3>
+                            <p class="text-[11px] text-pinkPastel-600 font-extrabold">Guru Profesional IPS Kelas VII</p>
+                            
+                            <div class="mt-4 p-4 rounded-2xl bg-white text-left text-[11px] space-y-2 border border-pinkPastel-200 shadow-sm">
+                                <div class="flex items-center gap-2 text-slate-800">
+                                    <i class="fa-solid fa-graduation-cap text-pinkPastel-500"></i>
+                                    <span>S1 P. IPS - UIN Syarif Hidayatullah Jakarta</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-800">
+                                    <i class="fa-solid fa-school text-pinkPastel-500"></i>
+                                    <span>SMP Lentera Insani</span>
+                                </div>
+                            </div>
+
+                            <button onclick="switchTab('profilguru')" class="mt-4 w-full py-2.5 bg-pinkPastel-400 hover:bg-pinkPastel-500 text-white font-bold text-xs rounded-xl shadow">
+                                Lihat Profil & Visi Misi Guru <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Contact Quick Card -->
+                    <div class="bg-gradient-to-br from-pinkPastel-200 to-rose-200 p-5 rounded-3xl text-pinkPastel-950 shadow-md border border-pinkPastel-300">
+                        <div class="flex items-center gap-2 font-black text-xs mb-2">
+                            <span>📞</span> Layanan Konsultasi Belajar
+                        </div>
+                        <p class="text-[11px] font-semibold leading-relaxed mb-3 text-pinkPastel-950">
+                            Ada kesulitan memahami materi IPS? Hubungi Ibu Zahra Aulia melalui layanan WhatsApp atau Email.
+                        </p>
+                        <button onclick="switchTab('contact')" class="w-full bg-pinkPastel-500 text-white font-extrabold text-xs py-2.5 rounded-xl shadow hover:bg-pinkPastel-600">
+                            Buka Contact Person Guru
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: PROFIL & VISI MISI GURU ================= -->
+        <section id="tab-profilguru" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-pinkPastel-200">
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <span class="bg-pinkPastel-400 text-white text-[11px] px-4 py-1.5 rounded-full font-black uppercase tracking-wider shadow-sm">
+                        Profil & Visi Misi Tenaga Pendidik
+                    </span>
+                    <h2 class="text-2xl font-black text-pinkPastel-950 mt-3">Zahra Aulia, S.Pd.</h2>
+                    <p class="text-xs text-slate-600 font-medium mt-1">Guru Mata Pelajaran Ilmu Pengetahuan Sosial (IPS) Kelas VII SMP Lentera Insani</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Bio & Pendidikan -->
+                    <div class="p-6 rounded-3xl bg-white border border-pinkPastel-200 space-y-4 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-pinkPastel-300 text-pinkPastel-950 flex items-center justify-center text-xl shadow font-black">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <h3 class="text-base font-black text-pinkPastel-950">Riwayat Pendidikan</h3>
+                        <div class="bg-pinkPastel-50 p-4 rounded-2xl border border-pinkPastel-200 text-xs text-slate-700 leading-relaxed shadow-inner">
+                            <strong class="text-pinkPastel-900 block font-black">S1 Pendidikan Ilmu Pengetahuan Sosial (S.Pd.)</strong>
+                            <span>Universitas Islam Negeri (UIN) Syarif Hidayatullah Jakarta</span>
+                            <p class="mt-2 text-[11px] text-slate-500">Berfokus pada pengembangan media pembelajaran sosial digital, metodologi geografi terpadu, sosialisasi kemasyarakatan, serta edukasi sejarah lokal Nusantara.</p>
+                        </div>
+                    </div>
+
+                    <!-- Visi Guru -->
+                    <div class="p-6 rounded-3xl bg-amber-50 border border-amber-200 space-y-4 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-300 text-amber-950 flex items-center justify-center text-xl shadow font-black">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-base font-black text-pinkPastel-950">Visi Mengajar Guru</h3>
+                        <div class="bg-white p-4 rounded-2xl border border-amber-200 text-xs text-slate-800 leading-relaxed font-semibold shadow-sm">
+                            "Mewujudkan pembelajaran IPS Kelas VII yang inovatif, menyenangkan, berkarakter Pancasila, serta membentuk peserta didik yang memiliki wawasan kebangsaan luas, bernalar kritis terhadap fenomena sosial, dan peduli lingkungan hidup."
+                        </div>
+                    </div>
+
+                    <!-- Misi Guru -->
+                    <div class="p-6 rounded-3xl bg-emerald-50 border border-emerald-200 space-y-4 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-300 text-emerald-950 flex items-center justify-center text-xl shadow font-black">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3 class="text-base font-black text-pinkPastel-950">Misi Mengajar Guru</h3>
+                        <ul class="space-y-2 text-xs text-slate-700">
+                            <li class="bg-white p-3 rounded-xl border border-emerald-200 font-medium flex items-start gap-2 shadow-sm">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5"></i>
+                                <span>Mengembangkan metode belajar IPS berbasis teknologi interaktif dan visual YouTube.</span>
+                            </li>
+                            <li class="bg-white p-3 rounded-xl border border-emerald-200 font-medium flex items-start gap-2 shadow-sm">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5"></i>
+                                <span>Mendorong keterlibatan aktif siswa dalam diskusi kritis serta kepedulian sosial.</span>
+                            </li>
+                            <li class="bg-white p-3 rounded-xl border border-emerald-200 font-medium flex items-start gap-2 shadow-sm">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5"></i>
+                                <span>Menyediakan pendampingan belajar ramah, inklusif, dan solutif bagi seluruh siswa Kelas VII.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kompetensi Guru Profesional -->
+                <div class="bg-gradient-to-r from-pinkPastel-400 to-rose-300 p-6 rounded-3xl text-pinkPastel-950 shadow-lg border border-pinkPastel-200">
+                    <h3 class="text-base font-black text-pinkPastel-950 mb-3 flex items-center gap-2">
+                        <span>🏆</span> Prinsip Mengajar Profesional Ibu Zahra Aulia, S.Pd.
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div class="bg-white/60 p-4 rounded-2xl backdrop-blur-sm border border-white/40">
+                            <h4 class="font-bold text-pinkPastel-950 mb-1">Pedagogik Modern</h4>
+                            <p class="text-pinkPastel-900 text-[11px]">Memadukan Kurikulum 2013 dan Kurikulum Merdeka dengan diferensiasi pembelajaran sesuai kebutuhan siswa.</p>
+                        </div>
+                        <div class="bg-white/60 p-4 rounded-2xl backdrop-blur-sm border border-white/40">
+                            <h4 class="font-bold text-pinkPastel-950 mb-1">Literasi Digital & Media</h4>
+                            <p class="text-pinkPastel-900 text-[11px]">Memanfaatkan LMS interaktif, kuis terintegrasi, serta video penjelas visual untuk mempermudah pemahaman.</p>
+                        </div>
+                        <div class="bg-white/60 p-4 rounded-2xl backdrop-blur-sm border border-white/40">
+                            <h4 class="font-bold text-pinkPastel-950 mb-1">Pendekatan Humanis</h4>
+                            <p class="text-pinkPastel-900 text-[11px]">Membangun komunikasi dua arah yang hangat, mendukung bakat siswa, dan responsif melalui Contact Person privat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: MATERI & VIDEO ================= -->
+        <section id="tab-materi" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-pinkPastel-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-black text-pinkPastel-950">Materi & Video Pembelajaran IPS Kelas VII</h2>
+                        <p class="text-xs text-slate-600 font-medium">Penjelasan teks sangat detail disertai integrasi video YouTube resmi.</p>
+                    </div>
+
+                    <!-- Filter Kurikulum -->
+                    <div class="flex bg-pinkPastel-200 p-1.5 rounded-2xl self-start border border-pinkPastel-300 shadow-inner">
+                        <button onclick="filterKurikulum('k13')" id="btn-k13" class="px-4 py-2.5 rounded-xl text-xs font-black transition-all bg-pinkPastel-500 text-white shadow">
+                            Kurikulum 2013 (K13)
+                        </button>
+                        <button onclick="filterKurikulum('merdeka')" id="btn-merdeka" class="px-4 py-2.5 rounded-xl text-xs font-black transition-all text-pinkPastel-950 hover:bg-pinkPastel-300">
+                            Kurikulum Merdeka (Kemendikbud)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Materi List -->
+                <div id="materi-container" class="space-y-6"></div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: PRESENSI & REKAP ================= -->
+        <section id="tab-presensi" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Presensi Form -->
+                <div id="presensi-input-card" class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-emerald-300 h-fit">
+                    <h2 class="text-base font-black text-pinkPastel-950 mb-2 flex items-center gap-2">
+                        <span class="text-xl">✍️</span> Form Presensi Kehadiran Siswa
+                    </h2>
+                    <p class="text-xs text-slate-600 mb-4 font-medium">Isi presensi harian sebelum memulai kelas IPS Bu Zahra.</p>
+
+                    <form id="presensiForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap Siswa</label>
+                            <input type="text" id="presensiNama" required placeholder="Contoh: Ahmad Rizky" class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500 bg-white text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">NIS / NISN</label>
+                            <input type="number" id="presensiNis" required placeholder="Contoh: 20267001" class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500 bg-white text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Kelas</label>
+                            <select id="presensiKelas" class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500 bg-white text-slate-900">
+                                <option value="VII-A">VII - A (IPS)</option>
+                                <option value="VII-B">VII - B (IPS)</option>
+                                <option value="VII-C">VII - C (IPS)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Status Kehadiran</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="border border-emerald-300 bg-white rounded-xl p-2.5 text-center text-xs font-bold cursor-pointer hover:bg-emerald-50 has-[:checked]:bg-emerald-600 has-[:checked]:text-white text-emerald-800">
+                                    <input type="radio" name="statusHadir" value="Hadir" checked class="hidden"> Hadir
+                                </label>
+                                <label class="border border-sky-300 bg-white rounded-xl p-2.5 text-center text-xs font-bold cursor-pointer hover:bg-sky-50 has-[:checked]:bg-sky-600 has-[:checked]:text-white text-sky-800">
+                                    <input type="radio" name="statusHadir" value="Izin" class="hidden"> Izin
+                                </label>
+                                <label class="border border-rose-300 bg-white rounded-xl p-2.5 text-center text-xs font-bold cursor-pointer hover:bg-rose-50 has-[:checked]:bg-rose-600 has-[:checked]:text-white text-rose-800">
+                                    <input type="radio" name="statusHadir" value="Sakit" class="hidden"> Sakit
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs rounded-xl shadow transition-transform active:scale-95">
+                            Kirim Presensi Kehadiran
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Rekap Presensi Table -->
+                <div class="lg:col-span-2 bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-emerald-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-base font-black text-pinkPastel-950">📊 Rekapitulasi Presensi Kehadiran</h2>
+                            <p class="text-xs text-slate-600 font-medium">Terhubung dan terpantau secara real-time oleh Ibu Zahra Aulia.</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="exportPresensiCSV()" class="text-xs bg-emerald-200 text-emerald-950 font-bold px-3 py-1.5 rounded-xl border border-emerald-300 hover:bg-emerald-300">
+                                <i class="fa-solid fa-download"></i> Ekspor CSV
+                            </button>
+                            <button onclick="clearPresensiData()" class="text-xs text-rose-700 hover:underline font-bold bg-rose-100 px-3 py-1.5 rounded-xl border border-rose-300">
+                                <i class="fa-solid fa-trash"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs bg-white rounded-2xl overflow-hidden border border-emerald-200">
+                            <thead class="bg-emerald-100 text-emerald-950 uppercase font-bold border-b border-emerald-200">
+                                <tr>
+                                    <th class="p-3">Waktu</th>
+                                    <th class="p-3">Nama Siswa</th>
+                                    <th class="p-3">NIS</th>
+                                    <th class="p-3">Kelas</th>
+                                    <th class="p-3">Status</th>
+                                    <th class="p-3 teacher-only hidden">Aksi Guru</th>
+                                </tr>
+                            </thead>
+                            <tbody id="presensiTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: KUIS & REKAP NILAI ================= -->
+        <section id="tab-kuis" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-amber-300">
+                <div id="quiz-intro" class="text-center max-w-xl mx-auto py-6">
+                    <div class="w-20 h-20 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-3xl mx-auto mb-4 border border-amber-300 shadow">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h2 class="text-xl font-black text-pinkPastel-950">Kuis Interaktif IPS Kelas VII</h2>
+                    <p class="text-xs text-slate-600 mt-2 mb-6 font-medium">Uji pemahaman kamu. Skor akan langsung otomatis tersimpan di tabel rekapitulasi nilai Bu Zahra.</p>
+                    
+                    <div class="space-y-4 text-left max-w-md mx-auto">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap Siswa</label>
+                            <input type="text" id="quizStudentName" placeholder="Masukkan nama kamu..." class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-amber-500 bg-white text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Kelas</label>
+                            <select id="quizStudentClass" class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-amber-500 bg-white text-slate-900">
+                                <option value="VII-A">VII - A</option>
+                                <option value="VII-B">VII - B</option>
+                                <option value="VII-C">VII - C</option>
+                            </select>
+                        </div>
+                        <button onclick="startQuiz()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-xs rounded-xl shadow transition-transform active:scale-95">
+                            Mulai Mengerjakan Kuis IPS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Screen -->
+                <div id="quiz-screen" class="hidden space-y-6">
+                    <div class="flex items-center justify-between border-b border-amber-200 pb-4">
+                        <div>
+                            <span class="text-xs text-amber-800 font-bold" id="quiz-progress-text">Soal 1 dari 5</span>
+                            <h3 class="font-black text-pinkPastel-950 text-xs mt-0.5" id="quiz-student-display">Siswa: -</h3>
+                        </div>
+                        <span class="bg-amber-200 text-amber-950 font-black text-[11px] px-3.5 py-1.5 rounded-full border border-amber-300">Kuis Evaluasi IPS</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl border border-amber-200 shadow-sm">
+                        <h3 id="quiz-question-text" class="font-black text-slate-900 text-sm md:text-base mb-4 leading-relaxed">
+                            Pertanyaan...
+                        </h3>
+                        <div id="quiz-options" class="space-y-3"></div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-2">
+                        <button id="btn-next-quiz" onclick="nextQuestion()" class="ml-auto bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-xs px-6 py-3.5 rounded-xl shadow">
+                            Soal Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Result -->
+                <div id="quiz-result" class="hidden text-center py-8">
+                    <div class="w-24 h-24 rounded-full bg-emerald-200 text-emerald-800 flex items-center justify-center text-4xl mx-auto mb-4 border border-emerald-300 shadow">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h2 class="text-xl font-black text-pinkPastel-950">Kuis Selesai!</h2>
+                    <p class="text-xs text-slate-600 mt-1 font-medium">Nilai kamu telah terekam secara otomatis ke dalam database rekapan guru.</p>
+                    
+                    <div class="my-6 p-6 bg-white rounded-3xl inline-block border border-emerald-300 shadow-inner">
+                        <span class="block text-xs font-bold text-emerald-800 uppercase">Skor Hasil Kuis</span>
+                        <span class="text-4xl font-black text-amber-600 mt-1 block" id="final-score-val">0</span>
+                    </div>
+
+                    <div>
+                        <button onclick="resetQuizView()" class="bg-pinkPastel-300 text-pinkPastel-950 font-black text-xs px-6 py-3.5 rounded-xl shadow">
+                            Selesai & Kembali
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Recap Table -->
+            <div class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-amber-300">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-base font-black text-pinkPastel-950">📊 Rekapitulasi Nilai Kuis Siswa</h2>
+                        <p class="text-xs text-slate-600 font-medium">Terekam otomatis dan dapat diisi manual oleh Ibu Zahra.</p>
+                    </div>
+                    <div class="teacher-only hidden">
+                        <button onclick="openAddQuizModal()" class="text-xs bg-amber-300 text-amber-950 font-black px-3.5 py-2 rounded-xl shadow hover:bg-amber-400">
+                            <i class="fa-solid fa-plus"></i> Input Nilai Manual
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs bg-white rounded-2xl overflow-hidden border border-amber-200">
+                        <thead class="bg-amber-100 text-amber-950 uppercase font-bold border-b border-amber-200">
+                            <tr>
+                                <th class="p-3">Waktu</th>
+                                <th class="p-3">Nama Siswa</th>
+                                <th class="p-3">Kelas</th>
+                                <th class="p-3">Skor</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3 teacher-only hidden">Aksi Guru</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quizResultTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: KUMPULAN TUGAS (UPLOAD FILE) ================= -->
+        <section id="tab-tugas" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Tugas Form (Support File Upload & Link) -->
+                <div id="tugas-input-card" class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-orange-300 h-fit">
+                    <h2 class="text-base font-black text-pinkPastel-950 mb-2 flex items-center gap-2">
+                        <span class="text-xl">📤</span> Form Unggah File Tugas IPS
+                    </h2>
+                    <p class="text-xs text-slate-600 mb-4 font-medium">Siswa dapat mengunggah file dokumen atau mencantumkan link Drive.</p>
+
+                    <form id="tugasForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Nama Siswa</label>
+                            <input type="text" id="tugasNama" required placeholder="Nama lengkap siswa..." class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-orange-500 bg-white text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Kelas</label>
+                            <select id="tugasKelas" class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-orange-500 bg-white text-slate-900">
+                                <option value="VII-A">VII - A</option>
+                                <option value="VII-B">VII - B</option>
+                                <option value="VII-C">VII - C</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Penugasan</label>
+                            <select id="tugasJudul" class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-orange-500 bg-white text-slate-900">
+                                <option value="Tugas 1: Peta Konsep SDA">Tugas 1: Peta Konsep SDA</option>
+                                <option value="Tugas 2: Analisis Lembaga Sosial">Tugas 2: Analisis Lembaga Sosial</option>
+                                <option value="Tugas 3: Laporan Rantai Ekonomi">Tugas 3: Laporan Rantai Ekonomi</option>
+                            </select>
+                        </div>
+
+                        <!-- OPSI FILE UPLOAD -->
+                        <div class="p-4 rounded-2xl bg-white border border-orange-200 space-y-3 shadow-sm">
+                            <div>
+                                <label class="block text-xs font-bold text-pinkPastel-950 mb-1">📎 Upload File Tugas (PDF/Word/Gambar)</label>
+                                <input type="file" id="tugasFileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" class="w-full text-xs text-slate-700 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-orange-400 file:text-white hover:file:bg-orange-500 cursor-pointer">
+                                <p class="text-[10px] text-slate-500 mt-1">Ukuran maksimal file direkomendasikan &lt; 5MB.</p>
+                            </div>
+                            <div class="relative flex py-1 items-center">
+                                <div class="flex-grow border-t border-orange-200"></div>
+                                <span class="flex-shrink mx-2 text-[10px] text-orange-800 font-bold uppercase">Atau Gunakan Link</span>
+                                <div class="flex-grow border-t border-orange-200"></div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Link File (Google Drive / Canva)</label>
+                                <input type="url" id="tugasLink" placeholder="https://drive.google.com/..." class="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-orange-500 bg-white text-slate-900">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-black text-xs rounded-xl shadow transition-transform active:scale-95">
+                            Kirim File & Tugas Sekarang
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Tugas Info & Rekap Table -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-orange-300">
+                        <h2 class="text-base font-black text-pinkPastel-950 mb-3">📌 Informasi Penugasan Aktif</h2>
+                        <div class="space-y-3">
+                            <div class="p-4 rounded-2xl bg-white border border-orange-200 flex justify-between items-center shadow-sm">
+                                <div>
+                                    <span class="text-[9px] bg-orange-200 text-orange-950 font-black px-2.5 py-0.5 rounded-full uppercase">Batas Akhir: 15 Nov 2026</span>
+                                    <h4 class="font-extrabold text-slate-900 text-xs mt-1">Tugas 1: Peta Konsep Sumber Daya Alam</h4>
+                                    <p class="text-[11px] text-slate-600">Buatlah peta potensi SDA Indonesia beserta keterangannya dan unggah filenya di sini.</p>
+                                </div>
+                                <span class="text-2xl">🗺️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-pinkPastel-50 p-6 rounded-3xl shadow-md border border-orange-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <h2 class="text-base font-black text-pinkPastel-950">📥 Rekapitulasi File Tugas Terkirim</h2>
+                            <button onclick="clearTugasData()" class="text-xs text-rose-700 hover:underline font-bold teacher-only hidden bg-rose-100 px-3 py-1 rounded-xl border border-rose-300">Reset Rekap</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs bg-white rounded-2xl overflow-hidden border border-orange-200">
+                                <thead class="bg-orange-100 text-orange-950 uppercase font-bold border-b border-orange-200">
+                                    <tr>
+                                        <th class="p-3">Waktu</th>
+                                        <th class="p-3">Siswa</th>
+                                        <th class="p-3">Judul Penugasan</th>
+                                        <th class="p-3">File / Link</th>
+                                        <th class="p-3 teacher-only hidden">Status Nilai Guru</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tugasTableBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: RUANG DISKUSI ================= -->
+        <section id="tab-diskusi" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-purple-300 max-w-4xl mx-auto">
+                <div class="flex items-center space-x-3 mb-6 border-b border-purple-200 pb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-400 text-purple-950 flex items-center justify-center text-xl shadow font-black">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-black text-pinkPastel-950">Ruang Diskusi & Forum IPS</h2>
+                        <p class="text-xs text-slate-600 font-medium">Wadah tanya jawab interaktif siswa bersama Ibu Zahra Aulia.</p>
+                    </div>
+                </div>
+
+                <form id="diskusiForm" class="bg-white p-5 rounded-3xl border border-purple-200 mb-6 space-y-3 shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <input type="text" id="diskusiNama" required placeholder="Nama Kamu..." class="px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-purple-500 bg-slate-50 text-slate-900">
+                        <select id="diskusiRole" class="px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-purple-500 bg-slate-50 text-slate-900">
+                            <option value="Siswa">Siswa Kelas VII</option>
+                            <option value="Guru">Ibu Zahra Aulia (Guru IPS)</option>
+                        </select>
+                    </div>
+                    <textarea id="diskusiPesan" required rows="3" placeholder="Tuliskan pertanyaan atau komentar kamu seputar materi IPS..." class="w-full px-4 py-3 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-purple-500 bg-slate-50 text-slate-900"></textarea>
+                    <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white font-black text-xs px-6 py-3 rounded-xl shadow transition-transform active:scale-95">
+                        <i class="fa-solid fa-paper-plane mr-1"></i> Posting Diskusi
+                    </button>
+                </form>
+
+                <div id="diskusiFeed" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: RPP & PERANGKAT (KEMENDIKBUD SPECS) ================= -->
+        <section id="tab-rpp" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-pinkPastel-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-black text-pinkPastel-950">Perangkat Pembelajaran IPS (RPP 1 Tahun Full)</h2>
+                        <p class="text-xs text-slate-600 font-medium">RPP Kurikulum 2013 & Modul Ajar Kurikulum Merdeka Standar Kemendikbudristek LENGKAP Sub-Materi.</p>
+                    </div>
+                    <button onclick="downloadDocumentMock()" class="bg-pinkPastel-500 hover:bg-pinkPastel-600 text-white font-black text-xs px-5 py-3 rounded-xl shadow flex items-center gap-2 self-start">
+                        <i class="fa-solid fa-file-word"></i> Unduh Dokumen RPP Full (.docx)
+                    </button>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- KURIKULUM 2013 -->
+                    <div class="border border-pinkPastel-300 rounded-3xl overflow-hidden shadow-sm bg-white">
+                        <div class="bg-pinkPastel-400 text-white p-4 font-black text-xs flex items-center justify-between">
+                            <span>📘 Rencana Pelaksanaan Pembelajaran (RPP) Kurikulum 2013 (4 Bab Full)</span>
+                            <span class="text-[10px] bg-pinkPastel-600 px-3 py-1 rounded-full text-white">Semester 1 & 2</span>
+                        </div>
+                        <div class="p-5 space-y-4 text-xs text-slate-800">
+                            <div class="p-4 bg-pinkPastel-50 rounded-2xl border border-pinkPastel-200 shadow-sm">
+                                <h4 class="font-black text-pinkPastel-950 text-sm">BAB 1 - Manusia, Tempat, dan Lingkungan (6 JP / 3 Pertemuan)</h4>
+                                <p class="text-[11px] text-pinkPastel-600 font-bold mt-1">Sub-Materi Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Pengertian ruang dan interaksi antarruang.</li>
+                                    <li>Letak dan luas wilayah Indonesia (astronomis & geografis).</li>
+                                    <li>Potensi sumber daya alam Indonesia (hutan, tambang, kemaritiman).</li>
+                                    <li>Kondisi alam Indonesia (iklim, geologi, bentuk muka bumi, flora-fauna).</li>
+                                    <li>Dinamika kependudukan Indonesia (jumlah, persebaran, komposisi, kualitas).</li>
+                                    <li>Interaksi antarruang di Indonesia dan negara-negara ASEAN.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-pinkPastel-50 rounded-2xl border border-pinkPastel-200 shadow-sm">
+                                <h4 class="font-black text-pinkPastel-950 text-sm">BAB 2 - Interaksi Sosial dan Lembaga Sosial (6 JP / 3 Pertemuan)</h4>
+                                <p class="text-[11px] text-pinkPastel-800 font-bold mt-1">Sub-Materi Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Pengertian interaksi sosial.</li>
+                                    <li>Syarat terjadinya interaksi sosial (kontak dan komunikasi).</li>
+                                    <li>Bentuk-bentuk interaksi sosial (asosiatif & disosiatif).</li>
+                                    <li>Pengaruh interaksi sosial terhadap kehidupan masyarakat.</li>
+                                    <li>Pengertian dan jenis lembaga sosial.</li>
+                                    <li>Fungsi lembaga keluarga, agama, pendidikan, ekonomi, dan politik.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-pinkPastel-50 rounded-2xl border border-pinkPastel-200 shadow-sm">
+                                <h4 class="font-black text-pinkPastel-950 text-sm">BAB 3 - Aktivitas Manusia dalam Memenuhi Kebutuhan (6 JP / 3 Pertemuan)</h4>
+                                <p class="text-[11px] text-pinkPastel-800 font-bold mt-1">Sub-Materi Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Kelangkaan dan kebutuhan manusia.</li>
+                                    <li>Macam-macam kebutuhan manusia.</li>
+                                    <li>Tindakan, motif, dan prinsip ekonomi.</li>
+                                    <li>Kegiatan produksi, distribusi, dan konsumsi.</li>
+                                    <li>Permintaan, penawaran, dan pasar.</li>
+                                    <li>Peran ilmu pengetahuan dan teknologi dalam kegiatan ekonomi.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-pinkPastel-50 rounded-2xl border border-pinkPastel-200 shadow-sm">
+                                <h4 class="font-black text-pinkPastel-950 text-sm">BAB 4 - Kehidupan Masyarakat Praaksara, Hindu-Buddha, dan Islam (6 JP / 3 Pertemuan)</h4>
+                                <p class="text-[11px] text-pinkPastel-800 font-bold mt-1">Sub-Materi Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Kehidupan masyarakat pada masa praaksara.</li>
+                                    <li>Asal-usul nenek moyang bangsa Indonesia.</li>
+                                    <li>Perkembangan masyarakat pada masa Hindu-Buddha.</li>
+                                    <li>Kerajaan-kerajaan Hindu-Buddha di Indonesia.</li>
+                                    <li>Perkembangan Islam di Indonesia.</li>
+                                    <li>Kerajaan-kerajaan Islam di Indonesia.</li>
+                                    <li>Peninggalan sejarah masa praaksara, Hindu-Buddha, dan Islam.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KURIKULUM MERDEKA -->
+                    <div class="border border-emerald-300 rounded-3xl overflow-hidden shadow-sm bg-white">
+                        <div class="bg-emerald-600 text-white p-4 font-black text-xs flex items-center justify-between">
+                            <span>🌱 Modul Ajar Kurikulum Merdeka (Kemendikbud Ristek - 7 Bab Full)</span>
+                            <span class="text-[10px] bg-emerald-950 px-3 py-1 rounded-full">Fase D Kelas VII</span>
+                        </div>
+                        <div class="p-5 space-y-4 text-xs text-slate-800">
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 1 - Geografi dan Lingkungan (Semester 1)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Pengertian lingkungan geografi & peta dasar tempat tinggal.</li>
+                                    <li>Karakteristik fisik bentang alam (dataran tinggi, rendah, pesisir).</li>
+                                    <li>Kondisi iklim, cuaca, dan letak keruangan lokal.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 2 - Konektivitas Antarruang dan Pemanfaatan SDA (Semester 1)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Keterkaitan pasokan sumber daya antarwilayah pedesaan-perkotaan.</li>
+                                    <li>Potensi sumber daya alam daratan, kehutanan, dan pertambangan.</li>
+                                    <li>Prinsip pelestarian dan pemanfaatan SDA secara berkelanjutan.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 3 - Aktivitas Manusia dan Perubahan Iklim (Semester 1)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Pengaruh aktivitas manusia terhadap iklim & pemanasan global.</li>
+                                    <li>Dampak pencemaran udara, deforestasi, dan bencana alam.</li>
+                                    <li>Mitigasi risiko bencana berbasis kearifan lokal.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 4 - Kegiatan Ekonomi Masyarakat (Semester 2)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Kelangkaan, kebutuhan manusia, dan skala prioritas.</li>
+                                    <li>Kegiatan produksi, distribusi, konsumsi, dan pasar.</li>
+                                    <li>Peran IPTEK, UMKM, dan pasar digital dalam ekonomi.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 5 - Interaksi Sosial dan Lembaga Sosial (Semester 2)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Syarat kontak dan komunikasi dalam interaksi sosial.</li>
+                                    <li>Bentuk interaksi sosial asosiatif dan disosiatif.</li>
+                                    <li>Nilai, norma, serta fungsi 5 lembaga sosial utama.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 6 - Konsep Dasar Ilmu Sejarah (Semester 2)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Cara berpikir kronologis (diakronik) dan sinkronik.</li>
+                                    <li>Manusia sebagai subjek dan objek peristiwa sejarah.</li>
+                                    <li>Konsep ruang, waktu, perubahan, dan kesinambungan.</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm">
+                                <h4 class="font-black text-emerald-950 text-sm">BAB 7 - Sejarah Lokal dan Toponimi Wilayah (Semester 2)</h4>
+                                <p class="text-[11px] text-emerald-800 font-bold mt-1">Sub-Materi Kemendikbud Lengkap:</p>
+                                <ul class="list-disc ml-5 mt-1 space-y-1 text-slate-700">
+                                    <li>Asal-usul nama daerah/tempat (toponimi wilayah).</li>
+                                    <li>Tradisi lisan, folklore, dan peninggalan bersejarah sekitar.</li>
+                                    <li>Pelestarian nilai budaya lokal Nusantara.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: JADWAL MENGAJAR ================= -->
+        <section id="tab-jadwal" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-teal-300">
+                <h2 class="text-xl font-black text-pinkPastel-950 mb-2">🗓️ Jadwal Mengajar Ibu Zahra Aulia, S.Pd.</h2>
+                <p class="text-xs text-slate-600 mb-6 font-medium">Tahun Pelajaran 2026/2027 - SMP Lentera Insani.</p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse bg-white rounded-2xl overflow-hidden border border-teal-200">
+                        <thead>
+                            <tr class="bg-teal-100 text-teal-950 font-bold border-b border-teal-200">
+                                <th class="p-3.5">Hari</th>
+                                <th class="p-3.5">Waktu</th>
+                                <th class="p-3.5">Kelas</th>
+                                <th class="p-3.5">Mata Pelajaran</th>
+                                <th class="p-3.5">Ruangan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr>
+                                <td class="p-3.5 font-black text-pinkPastel-900">Senin</td>
+                                <td class="p-3.5 font-semibold">07:30 - 09:00 WIB</td>
+                                <td class="p-3.5"><span class="bg-pinkPastel-200 text-pinkPastel-950 font-black px-3 py-1 rounded-full">VII - A</span></td>
+                                <td class="p-3.5 font-bold">IPS Terpadu</td>
+                                <td class="p-3.5 font-semibold">Ruang VII-A</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 font-black text-pinkPastel-900">Senin</td>
+                                <td class="p-3.5 font-semibold">09:30 - 11:00 WIB</td>
+                                <td class="p-3.5"><span class="bg-amber-200 text-amber-950 font-black px-3 py-1 rounded-full">VII - B</span></td>
+                                <td class="p-3.5 font-bold">IPS Terpadu</td>
+                                <td class="p-3.5 font-semibold">Ruang VII-B</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 font-black text-teal-800">Rabu</td>
+                                <td class="p-3.5 font-semibold">08:00 - 09:30 WIB</td>
+                                <td class="p-3.5"><span class="bg-emerald-200 text-emerald-950 font-black px-3 py-1 rounded-full">VII - C</span></td>
+                                <td class="p-3.5 font-bold">IPS Terpadu</td>
+                                <td class="p-3.5 font-semibold">Ruang VII-C</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: KALENDER PENDIDIKAN ================= -->
+        <section id="tab-kalender" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-blue-300">
+                <h2 class="text-xl font-black text-pinkPastel-950 mb-2">📅 Kalender Pendidikan Spesifik 2026/2027</h2>
+                <p class="text-xs text-slate-600 mb-6 font-medium">Agenda lengkap tanggal kegiatan akademik SMP Lentera Insani.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-5 rounded-3xl bg-white border border-pinkPastel-200 shadow-sm">
+                        <span class="text-xs font-black text-pinkPastel-900 block mb-1">13 - 15 Juli 2026</span>
+                        <h4 class="font-extrabold text-slate-900 text-sm">Masa Pengenalan Lingkungan Sekolah (MPLS)</h4>
+                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed font-medium">Awal Tahun Ajaran Baru 2026/2027 Kelas VII.</p>
+                    </div>
+                    <div class="p-5 rounded-3xl bg-white border border-amber-300 shadow-sm">
+                        <span class="text-xs font-black text-amber-800 block mb-1">12 - 17 Oktober 2026</span>
+                        <h4 class="font-extrabold text-slate-900 text-sm">Asesmen Tengah Semester (ATS) Ganjil</h4>
+                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed font-medium">Evaluasi tengah semester mata pelajaran IPS.</p>
+                    </div>
+                    <div class="p-5 rounded-3xl bg-white border border-emerald-300 shadow-sm">
+                        <span class="text-xs font-black text-emerald-800 block mb-1">7 - 12 Desember 2026</span>
+                        <h4 class="font-extrabold text-slate-900 text-sm">Asesmen Akhir Semester (AAS) Ganjil</h4>
+                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed font-medium">Ujian akhir semester ganjil.</p>
+                    </div>
+                    <div class="p-5 rounded-3xl bg-white border border-purple-300 shadow-sm">
+                        <span class="text-xs font-black text-purple-800 block mb-1">18 Desember 2026</span>
+                        <h4 class="font-extrabold text-slate-900 text-sm">Penerbitan Rapor Semester Ganjil</h4>
+                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed font-medium">Penyerahan buku hasil belajar peserta didik.</p>
+                    </div>
+                    <div class="p-5 rounded-3xl bg-white border border-sky-300 shadow-sm">
+                        <span class="text-xs font-black text-sky-800 block mb-1">4 Januari 2027</span>
+                        <h4 class="font-extrabold text-slate-900 text-sm">Awal Masuk Semester Genap</h4>
+                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed font-medium">Memulai pembelajaran semester 2.</p>
+                    </div>
+                    <div class="p-5 rounded-3xl bg-white border border-orange-300 shadow-sm">
+                        <span class="text-xs font-black text-orange-800 block mb-1">14 - 19 Juni 2027</span>
+                        <h4 class="font-extrabold text-slate-900 text-sm">Asesmen Akhir Tahun (PAT) & Kenaikan</h4>
+                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed font-medium">Ujian kenaikan kelas VII ke kelas VIII.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: CONTACT PERSON GURU ================= -->
+        <section id="tab-contact" class="hidden space-y-6">
+            <div class="bg-pinkPastel-50 p-6 md:p-8 rounded-3xl shadow-md border border-pinkPastel-300 max-w-3xl mx-auto">
+                <div class="text-center max-w-xl mx-auto mb-6">
+                    <div class="w-16 h-16 rounded-2xl bg-pinkPastel-300 text-pinkPastel-950 flex items-center justify-center text-2xl mx-auto mb-3 shadow font-black">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h2 class="text-xl font-black text-pinkPastel-950">Layanan Bantuan & Contact Person Guru</h2>
+                    <p class="text-xs text-slate-600 font-medium">Ada hal yang ingin ditanyakan langsung kepada Bu Zahra Aulia? Hubungi via kontak resmi berikut.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/6281234567890?text=Halo%20Bu%20Zahra%20Aulia,%20saya%20siswa%20kelas%20VII%20ingin%20bertanya%20mengenai%20materi%20IPS" target="_blank" class="p-5 rounded-3xl bg-white border border-emerald-300 flex items-center space-x-4 hover:scale-[1.02] transition-all shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl shadow">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-emerald-800 font-black uppercase">Respon Cepat</span>
+                            <h4 class="font-black text-slate-900 text-sm">WhatsApp Resmi</h4>
+                            <p class="text-xs text-slate-600 font-medium">+62 812-3456-7890</p>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:zahraaulia.ips@lenterainsani.sch.id" class="p-5 rounded-3xl bg-white border border-pinkPastel-300 flex items-center space-x-4 hover:scale-[1.02] transition-all shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-pinkPastel-500 text-white flex items-center justify-center text-xl shadow">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-pinkPastel-700 font-black uppercase">Surel Akademik</span>
+                            <h4 class="font-black text-slate-900 text-sm">Email Pengampu</h4>
+                            <p class="text-xs text-slate-600 font-medium">zahraaulia.ips@lenterainsani.sch.id</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Jam Layanan -->
+                <div class="p-5 rounded-2xl bg-white border border-pinkPastel-200 text-xs text-slate-700 leading-relaxed font-medium shadow-sm">
+                    <strong class="text-pinkPastel-800 block font-black mb-1">⏱️ Jam Konsultasi & Layanan WhatsApp:</strong>
+                    <span>Senin - Jumat: 08:00 - 16:00 WIB</span><br>
+                    <span>Sabtu & Minggu: Khusus Pertanyaan Darurat Penugasan.</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS SCRIPT LOGIC -->
+    <script>
+        const dataMateri = {
+            k13: [
+                {
+                    bab: "BAB 1",
+                    judul: "Manusia, Tempat, dan Lingkungan",
+                    sub: "Pengertian ruang, letak luas Indonesia, potensi SDA, kondisi alam, serta dinamika kependudukan.",
+                    video: "https://www.youtube.com/embed/d6r8oWTuxuc",
+                    icon: "🌏",
+                    bg: "from-pinkPastel-100 to-rose-200 border-pinkPastel-300",
+                    detail: "Secara komprehensif, ruang adalah seluruh wadah yang melingkupi permukaan bumi tempat tinggal bagi makhluk hidup (manusia, hewan, dan tumbuhan). Interaksi antarruang tercipta karena setiap wilayah di muka bumi memiliki keunggulan komparatif, sumber daya, serta karakteristik fisik yang berbeda-beda sehingga mendorong terjadinya mobilitas barang, manusia, dan informasi. Wilayah Negara Kesatuan Republik Indonesia berada pada posisi strategis secara astronomis di antara 6°LU - 11°LS dan 95°BT - 141°BT, serta diapit oleh dua benua (Asia dan Australia) serta dua samudra besar (Hindia dan Pasifik). Kondisi geologis Indonesia yang terletak pada jalur pertemuan tiga lempeng besar dunia (Lempeng Eurasia, Indo-Australia, dan Pasifik) menyebabkan wilayah ini kaya akan keragaman bentuk muka bumi, gunung berapi, serta kesuburan tanah. Potensi sumber daya alam Indonesia sangat melimpah, mulai dari sektor kehutanan, hasil pertambangan (minyak bumi, gas, batu bara, emas), hingga potensi kemaritiman dan perikanan nusantara yang menjadi tumpuan masa depan bangsa."
+                },
+                {
+                    bab: "BAB 2",
+                    judul: "Interaksi Sosial dan Lembaga Sosial",
+                    sub: "Pengertian interaksi sosial, syarat, bentuk asosiatif/disosiatif, serta fungsi lembaga sosial.",
+                    video: "https://www.youtube.com/embed/qW-7jPfGZrs",
+                    icon: "🤝",
+                    bg: "from-pastelMint-100 to-emerald-200 border-emerald-300",
+                    detail: "Interaksi sosial merupakan kunci dari semua kehidupan bersama dan hubungan timbal balik antarmanusia, baik antara individu dengan individu, individu dengan kelompok, maupun kelompok dengan kelompok. Agar interaksi sosial dapat berlangsung, mutlak diperlukan dua syarat utama: (1) Kontak sosial (bisa secara langsung bertatap muka atau tidak langsung melalui media), dan (2) Komunikasi (proses penyampaian dan penerimaan pesan atau makna antarpihak). Bentuk interaksi sosial terbagi menjadi dua golongan besar: proses asosiatif yang mengarah pada persatuan (meliputi kerja sama, akomodasi, asimilasi, dan akulturasi) dan proses disosiatif yang mengarah pada perpecahan atau renggangnya hubungan (meliputi persaingan, kontravensi, dan konflik). Selanjutnya, untuk menjaga keteraturan hidup, masyarakat membentuk lembaga sosial (pranata sosial) yang merupakan seperangkat aturan dan wadah formal untuk memenuhi kebutuhan pokok manusia, yang terdiri dari lembaga keluarga, lembaga agama, lembaga ekonomi, lembaga pendidikan, dan lembaga politik."
+                },
+                {
+                    bab: "BAB 3",
+                    judul: "Aktivitas Manusia Dalam Memenuhi Kebutuhan",
+                    sub: "Kelangkaan, kebutuhan manusia, tindakan & motif ekonomi, produksi, distribusi, konsumsi, dan pasar.",
+                    video: "https://www.youtube.com/embed/4dNAc2NEeGw",
+                    icon: "🛍️",
+                    bg: "from-pastelYellow-100 to-amber-200 border-amber-300",
+                    detail: "Inti permasalahan ekonomi dalam kehidupan manusia adalah adanya kelangkaan (scarcity), di mana kebutuhan manusia sifatnya tidak terbatas, sementara alat pemuas kebutuhan (sumber daya alam dan barang/jasa) sangatlah terbatas. Kebutuhan manusia diklasifikasikan berdasarkan tingkat kepentingannya (primer, sekunder, tersier), waktu pemenuhannya, sifatnya, serta subjek yang membutuhkannya. Dalam mengelola sumber daya, manusia melakukan tindakan ekonomi dengan berpedoman pada prinsip ekonomi (pengorbanan sekecil-kecilnya untuk memperoleh hasil tertentu, atau dengan pengorbanan tertentu memperoleh hasil maksimal). Kegiatan pokok ekonomi meliputi produksi (menciptakan atau menambah nilai guna barang/jasa), distribusi (menyalurkan barang dari produsen ke konsumen), dan konsumsi (menghabiskan atau mengurangi nilai guna suatu barang). Selain itu, interaksi antara permintaan (demand) dan penawaran (supply) di pasar menentukan terbentuknya harga keseimbangan, didukung oleh peranan pesat ilmu pengetahuan dan teknologi (IPTEK) dalam memajukan sistem perekonomian modern."
+                },
+                {
+                    bab: "BAB 4",
+                    judul: "Kehidupan Masyarakat Masa Praaksara, Hindu-Buddha, dan Islam",
+                    sub: "Periodisasi praaksara, asal-usul nenek moyang, perkembangan dan kerajaan Hindu-Buddha & Islam.",
+                    video: "https://www.youtube.com/embed/S7GVz-YGWrY",
+                    icon: "🏛️",
+                    bg: "from-pastelPurple-100 to-pink-200 border-purple-300",
+                    detail: "Sejarah perkembangan peradaban di Nusantara dibagi menjadi beberapa babak penting. Masa praaksara adalah masa ketika manusia belum mengenal tulisan, diteliti berdasarkan fosil dan artefak peninggalannya mulai dari masa berburu dan meramu hingga masa bercocok tanam dan perundagian. Asal-usul nenek moyang bangsa Indonesia berasal dari gelombang migrasi bangsa Austronesia (Proto Melayu dan Deutero Melayu) yang menyebar ke seluruh kepulauan nusantara. Masuknya pengaruh kebudayaan Hindu dan Buddha dari India melalui jalur perdagangan laut membawa perubahan masif dalam bidang pemerintahan (sistem kerajaan monarki), sistem religi, kesusastraan, dan arsitektur megah seperti Candi Borobudur dan Prambanan. Selanjutnya, masuknya agama Islam di Indonesia yang dibawa oleh para saudagar Muslim dari Gujarat, Persia, dan Arab berakselerasi dengan budaya lokal dan melahirkan kerajaan-kerajaan Islam besar seperti Samudera Pasai, Kesultanan Demak, Pajang, Mataram Islam, Kesultanan Banten, hingga Kerajaan Gowa-Tallo di Sulawesi."
+                }
+            ],
+            merdeka: [
+                {
+                    bab: "BAB 1",
+                    judul: "Geografi dan Lingkungan",
+                    sub: "Pemahaman dasar kondisi fisik bumi dan lingkungan sekitar peserta didik (Kemendikbud Specs).",
+                    video: "https://www.youtube.com/embed/K4V_GO5d0eY",
+                    icon: "🌿",
+                    bg: "from-pastelMint-100 to-pinkPastel-100 border-emerald-300",
+                    detail: "Mempelajari secara mendalam tentang letak wilayah tempat tinggal peserta didik, pengenalan peta topografi sederhana, unsur-unsur cuaca dan iklim, serta bagaimana bentuk bentang alam (dataran tinggi, dataran rendah, daerah pesisir) memengaruhi pola kehidupan harian, mata pencaharian, serta kebiasaan masyarakat setempat."
+                },
+                {
+                    bab: "BAB 2",
+                    judul: "Konektivitas Antarruang dan Pemanfaatan SDA",
+                    sub: "Hubungan antarwilayah dan pengolahan potensi sumber daya alam secara bijak.",
+                    video: "https://www.youtube.com/embed/fsjyCzqj03w",
+                    icon: "🗺️",
+                    bg: "from-pastelBlue-100 to-rose-100 border-sky-300",
+                    detail: "Keterkaitan pasokan pangan dan energi antarwilayah di Indonesia. Mengkaji bagaimana daerah pedesaan menyuplai bahan mentah ke perkotaan, dan sebaliknya perkotaan menyuplai barang industri ke daerah, serta pentingnya konsep pembangunan berkelanjutan (sustainable development)."
+                },
+                {
+                    bab: "BAB 3",
+                    judul: "Aktivitas Manusia dan Perubahan Iklim",
+                    sub: "Dampak aktivitas manusia terhadap perubahan cuaca, iklim, dan kebencanaan.",
+                    video: "https://www.youtube.com/embed/U8Anuc9F_i0",
+                    icon: "⛅",
+                    bg: "from-pastelOrange-100 to-pinkPastel-100 border-orange-300",
+                    detail: "Mengkaji isu global pemanasan global (global warming), emisi karbon, deforestasi hutan, serta pentingnya mitigasi bencana alam berbasis kearifan lokal agar masyarakat siap siaga menghadapi risiko banjir, gempa bumi, dan tanah longsor."
+                },
+                {
+                    bab: "BAB 4",
+                    judul: "Kegiatan Ekonomi Masyarakat",
+                    sub: "Prinsip dasar ekonomi, produksi, distribusi, dan konsumsi di lingkungan sekitar.",
+                    video: "https://www.youtube.com/embed/a9H6tMdmzZc",
+                    icon: "💰",
+                    bg: "from-pastelYellow-100 to-rose-100 border-amber-300",
+                    detail: "Menelusuri dinamika pasar tradisional dan pasar modern, peran UMKM dalam menggerakkan ekonomi kerakyatan, serta pengenalan dasar literasi keuangan digital dan e-commerce bagi generasi muda."
+                },
+                {
+                    bab: "BAB 5",
+                    judul: "Interaksi Sosial dan Lembaga Sosial",
+                    sub: "Pembentukan karakter sosial dan peran lembaga sosial di masyarakat.",
+                    video: "https://www.youtube.com/embed/qW-7jPfGZrs",
+                    icon: "👥",
+                    bg: "from-pastelPurple-100 to-pinkPastel-100 border-purple-300",
+                    detail: "Eksplorasi mendalam mengenai dinamika kelompok sosial di masyarakat majemuk Indonesia, penanaman nilai toleransi, serta fungsi pranata sosial dalam menjaga keharmonisan hidup berbangsa dan bernegara."
+                },
+                {
+                    bab: "BAB 6",
+                    judul: "Konsep Dasar Ilmu Sejarah",
+                    sub: "Pengenalan berpikir kronologis, ruang, dan waktu dalam studi sejarah.",
+                    video: "https://www.youtube.com/embed/Rpr-5t_2mhE",
+                    icon: "📜",
+                    bg: "from-rose-100 to-pastelPurple-100 border-rose-300",
+                    detail: "Memahami cara berpikir diakronik (memanjang dalam waktu, mementingkan proses) dan sinkronik (melebar dalam ruang, mementingkan struktur), serta konsep perubahan dan kesinambungan dalam peristiwa sejarah."
+                },
+                {
+                    bab: "BAB 7",
+                    judul: "Sejarah Lokal dan Toponimi Wilayah",
+                    sub: "Mempelajari asal-usul nama tempat dan warisan budaya lokal daerah.",
+                    video: "https://www.youtube.com/embed/xVKOQQwrK-0",
+                    icon: "📍",
+                    bg: "from-pastelBlue-100 to-pinkPastel-100 border-sky-300",
+                    detail: "Melakukan penelusuran sejarah asal-usul penamaan suatu daerah (toponimi), menggali cerita rakyat (folklore), tradisi lisan, serta merawat warisan budaya lokal agar tetap lestari di tengah arus modernisasi."
+                }
+            ]
+        };
+
+        const quizQuestions = [
+            {
+                q: "Salah satu syarat terjadinya interaksi sosial dalam masyarakat adalah adanya...",
+                options: ["Ruang yang luas", "Kontak sosial dan komunikasi", "Perbedaan status ekonomi", "Jumlah penduduk yang sedikit"],
+                answer: 1
+            },
+            {
+                q: "Letak wilayah Indonesia yang berada di antara dua benua dan dua samudra disebut letak...",
+                options: ["Astronomis", "Geologis", "Geografis", "Morfologis"],
+                answer: 2
+            },
+            {
+                q: "Kegiatan menghasilkan barang atau jasa untuk memenuhi kebutuhan disebut...",
+                options: ["Konsumsi", "Distribusi", "Produksi", "Investasi"],
+                answer: 2
+            },
+            {
+                q: "Masa di mana manusia Indonesia belum mengenal tulisan disebut masa...",
+                options: ["Praaksara", "Hindu-Buddha", "Kemerdekaan", "Reformasi"],
+                answer: 0
+            },
+            {
+                q: "Lembaga sosial yang pertama dan utama dalam membentuk kepribadian seorang anak adalah...",
+                options: ["Lembaga Pendidikan", "Lembaga Keluarga", "Lembaga Ekonomi", "Lembaga Politik"],
+                answer: 1
+            }
+        ];
+
+        let currentKurikulum = 'k13';
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let activeStudentName = '';
+        let activeStudentClass = '';
+        let currentUserRole = 'siswa';
+
+        window.onload = function() {
+            renderMateri();
+            loadPresensiData();
+            loadQuizData();
+            loadTugasData();
+            loadDiskusiData();
+
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('hidden');
+            });
+        };
+
+        function switchUserRole(role) {
+            currentUserRole = role;
+            const teacherElements = document.querySelectorAll('.teacher-only');
+            const presensiInputCard = document.getElementById('presensi-input-card');
+            const tugasInputCard = document.getElementById('tugas-input-card');
+
+            if(role === 'guru') {
+                teacherElements.forEach(el => el.classList.remove('hidden'));
+                if(presensiInputCard) presensiInputCard.style.opacity = '0.7';
+                if(tugasInputCard) tugasInputCard.style.opacity = '0.7';
+                alert('Berhasil beralih ke Mode GURU (Ibu Zahra Aulia, S.Pd.). Anda dapat mengelola rekapitulasi nilai dan tugas.');
+            } else {
+                teacherElements.forEach(el => el.classList.add('hidden'));
+                if(presensiInputCard) presensiInputCard.style.opacity = '1';
+                if(tugasInputCard) tugasInputCard.style.opacity = '1';
+                alert('Berhasil beralih ke Mode SISWA.');
+            }
+            loadPresensiData();
+            loadQuizData();
+            loadTugasData();
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`tab-${tabId}`);
+            if(target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.dataset.tab === tabId) {
+                    btn.className = "nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-950 bg-pinkPastel-300 shadow-md";
+                } else {
+                    btn.className = "nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-bold text-xs transition-all text-pinkPastel-100 hover:bg-pinkPastel-800 hover:text-white";
+                }
+            });
+
+            if(window.innerWidth < 768) {
+                document.getElementById('sidebar').classList.add('hidden');
+            }
+        }
+
+        function filterKurikulum(type) {
+            currentKurikulum = type;
+            const btnK13 = document.getElementById('btn-k13');
+            const btnMerdeka = document.getElementById('btn-merdeka');
+
+            if(type === 'k13') {
+                btnK13.className = "px-4 py-2.5 rounded-xl text-xs font-black transition-all bg-pinkPastel-500 text-white shadow";
+                btnMerdeka.className = "px-4 py-2.5 rounded-xl text-xs font-black transition-all text-pinkPastel-950 hover:bg-pinkPastel-300";
+            } else {
+                btnMerdeka.className = "px-4 py-2.5 rounded-xl text-xs font-black transition-all bg-pinkPastel-500 text-white shadow";
+                btnK13.className = "px-4 py-2.5 rounded-xl text-xs font-black transition-all text-pinkPastel-950 hover:bg-pinkPastel-300";
+            }
+            renderMateri();
+        }
+
+        function renderMateri() {
+            const container = document.getElementById('materi-container');
+            container.innerHTML = '';
+
+            dataMateri[currentKurikulum].forEach(item => {
+                const card = document.createElement('div');
+                card.className = `p-6 rounded-3xl bg-gradient-to-br ${item.bg} border flex flex-col space-y-4 shadow-sm`;
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="bg-pinkPastel-400 text-white font-black text-[10px] px-3 py-1 rounded-full uppercase shadow-sm">${item.bab}</span>
+                        <span class="text-3xl">${item.icon}</span>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-pinkPastel-950 text-base leading-tight">${item.judul}</h3>
+                        <p class="text-xs text-slate-700 font-semibold mt-1">${item.sub}</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200 text-xs text-slate-700 leading-relaxed shadow-inner">
+                        <strong class="text-pinkPastel-950 block mb-1 font-black">📖 Penjelasan Teks Rinci:</strong>
+                        ${item.detail}
+                    </div>
+                    <div class="relative w-full overflow-hidden rounded-2xl shadow-md pt-[56.25%] bg-slate-950 border border-slate-300">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="${item.video}" title="${item.judul}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('presensiForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('presensiNama').value;
+            const nis = document.getElementById('presensiNis').value;
+            const kelas = document.getElementById('presensiKelas').value;
+            const status = document.querySelector('input[name="statusHadir"]:checked').value;
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' (' + new Date().toLocaleDateString() + ')';
+
+            const presensiData = JSON.parse(localStorage.getItem('presensiIPS') || '[]');
+            presensiData.unshift({ id: Date.now(), nama, nis, kelas, status, time });
+            localStorage.setItem('presensiIPS', JSON.stringify(presensiData));
+
+            this.reset();
+            loadPresensiData();
+            alert('Presensi berhasil dikirim!');
+        });
+
+        function loadPresensiData() {
+            const presensiData = JSON.parse(localStorage.getItem('presensiIPS') || '[]');
+            const tbody = document.getElementById('presensiTableBody');
+            tbody.innerHTML = '';
+
+            if(presensiData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Belum ada presensi tercatat.</td></tr>`;
+                return;
+            }
+
+            presensiData.forEach(item => {
+                let badge = item.status === 'Hadir' ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : (item.status === 'Izin' ? 'bg-sky-100 text-sky-900 border border-sky-300' : 'bg-rose-100 text-rose-900 border border-rose-300');
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-50';
+                row.innerHTML = `
+                    <td class="p-3 text-slate-500">${item.time}</td>
+                    <td class="p-3 font-bold text-slate-900">${item.nama}</td>
+                    <td class="p-3 text-slate-600">${item.nis}</td>
+                    <td class="p-3 text-slate-600">${item.kelas}</td>
+                    <td class="p-3"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${badge}">${item.status}</span></td>
+                    <td class="p-3 teacher-only ${currentUserRole === 'guru' ? '' : 'hidden'}">
+                        <button onclick="deletePresensiItem(${item.id})" class="text-rose-700 hover:text-rose-900 font-bold text-xs"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function deletePresensiItem(id) {
+            if(confirm('Hapus data presensi ini?')) {
+                let presensiData = JSON.parse(localStorage.getItem('presensiIPS') || '[]');
+                presensiData = presensiData.filter(item => item.id !== id);
+                localStorage.setItem('presensiIPS', JSON.stringify(presensiData));
+                loadPresensiData();
+            }
+        }
+
+        function clearPresensiData() {
+            if(confirm('Reset seluruh data presensi?')) {
+                localStorage.removeItem('presensiIPS');
+                loadPresensiData();
+            }
+        }
+
+        function exportPresensiCSV() {
+            const presensiData = JSON.parse(localStorage.getItem('presensiIPS') || '[]');
+            if(presensiData.length === 0) {
+                alert('Belum ada data presensi untuk diekspor.');
+                return;
+            }
+            let csv = 'Waktu,Nama Siswa,NIS,Kelas,Status\n';
+            presensiData.forEach(i => {
+                csv += `"${i.time}","${i.nama}",${i.nis},"${i.kelas}","${i.status}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'Rekap_Presensi_IPS_Kelas7.csv');
+            a.click();
+        }
+
+        function startQuiz() {
+            activeStudentName = document.getElementById('quizStudentName').value.trim();
+            activeStudentClass = document.getElementById('quizStudentClass').value;
+
+            if(!activeStudentName) {
+                alert('Masukkan nama kamu terlebih dahulu!');
+                return;
+            }
+
+            currentQuizIndex = 0;
+            quizScore = 0;
+
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-student-display').innerText = `Siswa: ${activeStudentName} (${activeStudentClass})`;
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-progress-text').innerText = `Soal ${currentQuizIndex + 1} dari ${quizQuestions.length}`;
+            document.getElementById('quiz-question-text').innerText = q.q;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-2xl border border-amber-300 bg-white hover:bg-amber-50 text-xs font-semibold text-slate-800 transition-all flex items-center gap-3 shadow-sm";
+                btn.innerHTML = `<span class="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center text-[11px] font-bold text-amber-900 border border-amber-300">${String.fromCharCode(65+idx)}</span> ${opt}`;
+                btn.onclick = () => selectAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        let selectedAnswerIdx = null;
+        function selectAnswer(idx, btnEl) {
+            document.querySelectorAll('#quiz-options button').forEach(b => b.classList.remove('border-amber-500', 'bg-amber-100', 'font-bold'));
+            btnEl.classList.add('border-amber-500', 'bg-amber-100', 'font-bold');
+            selectedAnswerIdx = idx;
+        }
+
+        function nextQuestion() {
+            if(selectedAnswerIdx === null) {
+                alert('Pilih salah satu jawaban!');
+                return;
+            }
+
+            if(selectedAnswerIdx === quizQuestions[currentQuizIndex].answer) {
+                quizScore += 20;
+            }
+
+            selectedAnswerIdx = null;
+            currentQuizIndex++;
+
+            if(currentQuizIndex < quizQuestions.length) {
+                showQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('final-score-val').innerText = quizScore;
+
+            const results = JSON.parse(localStorage.getItem('quizIPSResults') || '[]');
+            results.unshift({
+                id: Date.now(),
+                nama: activeStudentName,
+                kelas: activeStudentClass,
+                skor: quizScore,
+                waktu: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            });
+            localStorage.setItem('quizIPSResults', JSON.stringify(results));
+            loadQuizData();
+        }
+
+        function resetQuizView() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-intro').classList.remove('hidden');
+        }
+
+        function loadQuizData() {
+            const results = JSON.parse(localStorage.getItem('quizIPSResults') || '[]');
+            const tbody = document.getElementById('quizResultTableBody');
+            tbody.innerHTML = '';
+
+            if(results.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Belum ada nilai kuis tercatat.</td></tr>`;
+                return;
+            }
+
+            results.forEach(item => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-50';
+                row.innerHTML = `
+                    <td class="p-3 text-slate-500">${item.waktu}</td>
+                    <td class="p-3 font-bold text-slate-900">${item.nama}</td>
+                    <td class="p-3 text-slate-600">${item.kelas}</td>
+                    <td class="p-3 font-black text-amber-700">${item.skor} / 100</td>
+                    <td class="p-3"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${item.skor >= 70 ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-rose-100 text-rose-900 border border-rose-300'}">${item.skor >= 70 ? 'Tuntas' : 'Remidial'}</span></td>
+                    <td class="p-3 teacher-only ${currentUserRole === 'guru' ? '' : 'hidden'}">
+                        <button onclick="deleteQuizItem(${item.id})" class="text-rose-700 hover:text-rose-900 font-bold text-xs"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function deleteQuizItem(id) {
+            if(confirm('Hapus rekap nilai ini?')) {
+                let results = JSON.parse(localStorage.getItem('quizIPSResults') || '[]');
+                results = results.filter(i => i.id !== id);
+                localStorage.setItem('quizIPSResults', JSON.stringify(results));
+                loadQuizData();
+            }
+        }
+
+        function openAddQuizModal() {
+            const nama = prompt('Masukkan Nama Siswa:');
+            if(!nama) return;
+            const kelas = prompt('Masukkan Kelas (VII-A / VII-B / VII-C):', 'VII-A');
+            const skor = parseInt(prompt('Masukkan Skor (0-100):', '85'));
+            if(isNaN(skor)) return;
+
+            const results = JSON.parse(localStorage.getItem('quizIPSResults') || '[]');
+            results.unshift({
+                id: Date.now(),
+                nama,
+                kelas,
+                skor,
+                waktu: new Date().toLocaleDateString() + ' (Input Guru)'
+            });
+            localStorage.setItem('quizIPSResults', JSON.stringify(results));
+            loadQuizData();
+            alert('Nilai berhasil ditambahkan oleh Guru!');
+        }
+
+        // TUGAS FORM LOGIC SUPPORTING FILE UPLOAD + LINK
+        document.getElementById('tugasForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('tugasNama').value;
+            const kelas = document.getElementById('tugasKelas').value;
+            const judul = document.getElementById('tugasJudul').value;
+            const linkInput = document.getElementById('tugasLink').value;
+            const fileInput = document.getElementById('tugasFileInput');
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' (' + new Date().toLocaleDateString() + ')';
+
+            let fileName = '';
+            if(fileInput.files && fileInput.files[0]) {
+                fileName = fileInput.files[0].name;
+            }
+
+            if(!fileName && !linkInput) {
+                alert('Silakan sertakan file yang diupload atau isi link file tugas!');
+                return;
+            }
+
+            const tugasList = JSON.parse(localStorage.getItem('tugasIPS') || '[]');
+            tugasList.unshift({
+                id: Date.now(),
+                nama,
+                kelas,
+                judul,
+                fileName: fileName || null,
+                link: linkInput || null,
+                time,
+                status: 'Sudah Dikumpulkan'
+            });
+            localStorage.setItem('tugasIPS', JSON.stringify(tugasList));
+
+            this.reset();
+            loadTugasData();
+            alert('Tugas berhasil dikirim ke Ibu Zahra!');
+        });
+
+        function loadTugasData() {
+            const tugasList = JSON.parse(localStorage.getItem('tugasIPS') || '[]');
+            const tbody = document.getElementById('tugasTableBody');
+            tbody.innerHTML = '';
+
+            if(tugasList.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Belum ada tugas terkirim.</td></tr>`;
+                return;
+            }
+
+            tugasList.forEach(item => {
+                let fileDisplay = '';
+                if(item.fileName) {
+                    fileDisplay += `<span class="bg-orange-100 text-orange-950 font-bold px-2 py-0.5 rounded border border-orange-300 block mb-1"><i class="fa-solid fa-paperclip"></i> ${item.fileName}</span>`;
+                }
+                if(item.link) {
+                    fileDisplay += `<a href="${item.link}" target="_blank" class="text-sky-600 underline font-semibold hover:text-sky-800"><i class="fa-solid fa-link"></i> Link Google Drive</a>`;
+                }
+
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-50';
+                row.innerHTML = `
+                    <td class="p-3 text-slate-500">${item.time}</td>
+                    <td class="p-3 font-bold text-slate-900">${item.nama} (${item.kelas})</td>
+                    <td class="p-3 text-slate-600 font-semibold">${item.judul}</td>
+                    <td class="p-3">${fileDisplay}</td>
+                    <td class="p-3 teacher-only ${currentUserRole === 'guru' ? '' : 'hidden'}">
+                        <select onchange="updateTugasStatus(${item.id}, this.value)" class="text-xs border rounded p-1 font-bold">
+                            <option value="Sudah Dikumpulkan" ${item.status === 'Sudah Dikumpulkan' ? 'selected' : ''}>Sudah Dikumpulkan</option>
+                            <option value="Dinilai (A)" ${item.status === 'Dinilai (A)' ? 'selected' : ''}>Dinilai (A)</option>
+                            <option value="Perbaiki" ${item.status === 'Perbaiki' ? 'selected' : ''}>Perbaiki</option>
+                        </select>
+                        <button onclick="deleteTugasItem(${item.id})" class="text-rose-700 ml-2 font-bold"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateTugasStatus(id, newStatus) {
+            let tugasList = JSON.parse(localStorage.getItem('tugasIPS') || '[]');
+            const t = tugasList.find(i => i.id === id);
+            if(t) {
+                t.status = newStatus;
+                localStorage.setItem('tugasIPS', JSON.stringify(tugasList));
+            }
+        }
+
+        function deleteTugasItem(id) {
+            if(confirm('Hapus data tugas ini?')) {
+                let tugasList = JSON.parse(localStorage.getItem('tugasIPS') || '[]');
+                tugasList = tugasList.filter(i => i.id !== id);
+                localStorage.setItem('tugasIPS', JSON.stringify(tugasList));
+                loadTugasData();
+            }
+        }
+
+        function clearTugasData() {
+            if(confirm('Reset seluruh data tugas?')) {
+                localStorage.removeItem('tugasIPS');
+                loadTugasData();
+            }
+        }
+
+        document.getElementById('diskusiForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('diskusiNama').value;
+            const role = document.getElementById('diskusiRole').value;
+            const pesan = document.getElementById('diskusiPesan').value;
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            let forumList = [];
+            try {
+                forumList = JSON.parse(localStorage.getItem('forumIPS') || '[]');
+                if(!Array.isArray(forumList)) forumList = [];
+            } catch(err) {
+                forumList = [];
+            }
+
+            forumList.unshift({ nama, role, pesan, time });
+            localStorage.setItem('forumIPS', JSON.stringify(forumList));
+
+            document.getElementById('diskusiPesan').value = '';
+            loadDiskusiData();
+        });
+
+        function loadDiskusiData() {
+            let forumList = [];
+            try {
+                forumList = JSON.parse(localStorage.getItem('forumIPS') || '[]');
+                if(!Array.isArray(forumList)) forumList = [];
+            } catch(err) {
+                forumList = [];
+            }
+
+            if(forumList.length === 0) {
+                forumList = [
+                    {
+                        nama: "Ibu Zahra Aulia, S.Pd.",
+                        role: "Guru",
+                        pesan: "Selamat datang anak-anak IPS Kelas VII! Silakan posting pertanyaan seputar materi pelajaran di sini ya! 😊",
+                        time: "08:00 WIB"
+                    }
+                ];
+                localStorage.setItem('forumIPS', JSON.stringify(forumList));
+            }
+
+            const feed = document.getElementById('diskusiFeed');
+            feed.innerHTML = '';
+
+            forumList.forEach(item => {
+                const isGuru = item.role === 'Guru';
+                const card = document.createElement('div');
+                card.className = `p-4.5 rounded-2xl border ${isGuru ? 'bg-pinkPastel-100 border-pinkPastel-300' : 'bg-white border-slate-200'} shadow-sm`;
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="w-8 h-8 rounded-full ${isGuru ? 'bg-pinkPastel-500 text-white font-bold' : 'bg-rose-400 text-white font-bold'} flex items-center justify-center text-xs shadow">
+                                ${isGuru ? '👩‍🏫' : '🎓'}
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-xs text-slate-900">${item.nama}</h4>
+                                <span class="text-[10px] ${isGuru ? 'text-pinkPastel-700' : 'text-rose-600'} font-bold">${item.role}</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] text-slate-400">${item.time}</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed pl-10 font-medium">${item.pesan}</p>
+                `;
+                feed.appendChild(card);
+            });
+        }
+
+        function downloadDocumentMock() {
+            alert('Mengunduh Berkas Perangkat Pembelajaran RPP IPS Kelas VII Lengkap 1 Tahun (Format .docx)...');
+        }
+    </script>
+</body>
+</html>
